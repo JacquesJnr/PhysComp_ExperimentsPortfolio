@@ -1,0 +1,76 @@
+//Digital
+
+//Analogue
+const int rX = A0;
+const int rY = A1;
+
+const int lX = A2;
+const int lY = A3;
+bool A, B, X, Y;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(8,INPUT_PULLUP);
+  pinMode(9,INPUT_PULLUP);
+  pinMode(10,INPUT_PULLUP);
+  pinMode(11,INPUT_PULLUP);
+
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  int xValue_R = analogRead(rX);
+  int yValue_R = analogRead(rY);
+
+  int xValue_L = analogRead(lX);
+  int yValue_L = analogRead(lY);  
+
+  if (digitalRead(8) == LOW){
+    A = true;
+  }else{
+    A = false;
+  }
+
+   if (digitalRead(9) == LOW){
+    B = true;
+  }else{
+    B = false;
+  }
+
+ if (digitalRead(10) == LOW){
+    X = true;
+  }else{
+    X = false;
+  }
+
+if (digitalRead(11) == LOW){
+    Y = true;
+  }else{
+    Y = false;
+  }
+  Serial.print(A);
+  Serial.println();
+  Serial.print(B);
+  Serial.println();
+  Serial.print(X);
+  Serial.println();
+  Serial.print(Y);
+  Serial.println();
+   
+  Serial.print("(");
+  Serial.print(xValue_R);
+  Serial.print(", ");
+  Serial.print(yValue_R);
+  Serial.print(") ");
+  Serial.print("   ");
+  Serial.print("(");
+  Serial.print(xValue_L);
+  Serial.print(", ");
+  Serial.print(yValue_L);
+  Serial.print(") ");
+  Serial.print("\n");
+
+  delay(100);
+
+  digitalWrite(LED_BUILTIN, HIGH);   // turn the LED on (HIGH is the voltage level)  
+}

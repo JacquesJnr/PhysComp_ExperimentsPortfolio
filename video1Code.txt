@@ -1,0 +1,44 @@
+//Digital
+
+//Analogue
+const int xPin = A0;
+const int yPin = A1 ;
+bool A, B;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(10,INPUT_PULLUP);
+  pinMode(11,INPUT_PULLUP);
+
+}
+
+void loop() {
+  int xValue = analogRead(xPin);
+  int yValue = analogRead(yPin);
+
+  if (digitalRead(10) == LOW){
+    A = true;
+  }else{
+    A = false;
+  }
+
+   if (digitalRead(11) == LOW){
+    B = true;
+  }else{
+    B = false;
+  }
+
+  Serial.print(A);
+  Serial.println();
+  Serial.print(B);
+  Serial.println();
+   
+  Serial.print("(");
+  Serial.print(xValue);
+  Serial.print(", ");
+  Serial.print(yValue);
+  Serial.print(") ");
+  Serial.print("\n");
+
+  delay(50);
+}
